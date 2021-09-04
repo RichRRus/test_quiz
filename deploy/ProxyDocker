@@ -1,0 +1,9 @@
+FROM ubuntu:14.04
+RUN mkdir /nginxconfig
+RUN apt-get update -y
+RUN apt-get install -y nginx
+EXPOSE 80
+RUN sudo rm /etc/nginx/nginx.conf
+WORKDIR /etc/nginx
+RUN mkdir /conf
+ENTRYPOINT nginx -c /nginxconfig/nginx.conf -g 'daemon off;'
